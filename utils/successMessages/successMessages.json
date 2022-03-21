@@ -1,0 +1,35 @@
+{
+  "successMessages": [
+    {
+      "successId": "LOGIN_OK",
+      "descriptionEn": "Your login was successfully!",
+      "descriptionDe": "Dein Login war erfolgreich!"
+    },
+    {
+      "successId": "LOGOUT_OK",
+      "descriptionEn": "Your logout was successfully!",
+      "descriptionDe": "Dein Logout war erfolgreich!"
+    },
+    {
+      "successId": "USER_ALREADY_LOGGED_IN",
+      "descriptionEn": "You are still logged in!",
+      "descriptionDe": "Du bist immer noch eingeloggt!"
+    },
+    {
+      "successId": "INSERT_MEMBER_OK",
+      "descriptionEn": "The member has been inserted successfully!",
+      "descriptionDe": "Der Member wurde erfolgreich hinzugefügt!"
+    },
+    {
+      "successId": "UPDATE_MEMBER_OK",
+      "descriptionEn": "The member has been updated successfully!",
+      "descriptionDe": "Der Member wurde erfolgreich aktualisiert!"
+    },
+    {
+      "successId": "DELETE_MEMBER_OK",
+      "descriptionEn": "The member has been deleted successfully!",
+      "descriptionDe": "Der Member wurde erfolgreich gelöscht!"
+    }
+  ]
+}
+
