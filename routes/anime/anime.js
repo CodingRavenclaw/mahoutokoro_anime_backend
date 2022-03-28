@@ -49,4 +49,31 @@ ROUTER.post('/anime/getanime',
     });
   });
 
+ROUTER.post('/anime/gettotalnumberofanime',
+  body('strSearch').isLength({min: 0, max: 32}),
+  (req, res) => {
+    arrValidationResult = validationResult(req);
+    if (!arrValidationResult.isEmpty()) {
+      return res.status(400).send({errors: arrValidationResult.array()});
+    }
+    arrErrors = [];
+    let strSearch = '%' + req.body.strSearch + '%',
+      arrInserts = [strSearch];
+    MAHOUTOKORO_MASTER_ACCESSOR.getConnection((err, con) => {
+      if (err) throw err;
+      let stmt = "SELECT COUNT(*) AS 'total_number_of_anime' FROM anime WHERE anime.name LIKE ?";
+      con.query(stmt, arrInserts, (sqlErr, sqlRes, sqlFields) => {
+        if (sqlErr) {
+          console.error('/anime/gettotalnumberofanime: ' + sqlErr);
+          arrErrors.push(ERROR_HELPER('SERVER_ERROR'));
+          res.status(500).send({'errors': arrErrors});
+        } else {
+          res.status(200).send({'data': sqlRes});
+        }
+        con.release();
+        if (err) throw err;
+      });
+    });
+  });
+
 module.exports = ROUTER;
