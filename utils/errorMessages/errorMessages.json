@@ -1,0 +1,40 @@
+{
+  "errorMessages": [
+    {
+      "errorId": "UNKOWN_ERROR",
+      "descriptionEn": "It seems that an unkown error occured! Maybe it's not a real one or it's the developers fault...",
+      "descriptionDe": "Es ist ein unbekannter Fehler aufgetreten! Vielleicht existiert er gar nicht oder es ist die Schuld des Entwicklers..."
+    },
+    {
+      "errorId": "SERVER_ERROR",
+      "descriptionEn": "A server error occured! Please reload or try it again later!",
+      "descriptionDe": "Es ist ein Serverfehler aufgetreten! Lade die Seite neu oder versuche es später noch einmal!"
+    },
+    {
+      "errorId": "NO_PERMISSION",
+      "descriptionEn": "You have no access to this site!",
+      "descriptionDe": "Sie haben kein Recht, diese Seite zu betreten!"
+    },
+    {
+      "errorId": "INVALID_LOGIN",
+      "descriptionEn": "Invailid login or password!",
+      "descriptionDe": "Ungültiger Login oder falsches Passwort!"
+    },
+    {
+      "errorId": "USER_NOT_LOGGED_IN",
+      "descriptionEn": "You are not logged in!",
+      "descriptionDe": "Du bist nicht eingeloggt!"
+    },
+    {
+      "errorId": "LOGOUT_ERROR",
+      "descriptionEn": "An error occured during the logout! Please reload the page or try it later!",
+      "descriptionDe": "Es ist ein Fehler beim Logout aufgetreten!"
+    },
+    {
+      "errorId": "MEMBER_PARENT_ELEMENT_MISSING",
+      "descriptionEn": "One or more parent elements (e.g. TS-Id or SteamId) are missing! Add them first in the parent tables and try it again!",
+      "descriptionDe": "Es fehlen Einträge in den Elterntabellen, z.B. TS-Id oder die SteamId. Füge die fehlenden Elemente zunächst in den Elterntabellen ein und versuche es dann erneut."
+    }
+  ]
+}
+

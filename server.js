@@ -1,6 +1,7 @@
 const EXPRESS = require('express'),
   BODY_PARSER = require('body-parser'),
   CORS_POLOCIES = require('cors'),
+  ROUTE_ANIME = require('../backend/routes/anime/anime'),
   APP = EXPRESS(),
 
   ARR_ALLOWED_DOMAINS = ['http://localhost:8080', 'https://localhost:8080'];
@@ -25,5 +26,8 @@ APP.use(BODY_PARSER.json());
 APP.use(BODY_PARSER.urlencoded({
   extended: true,
 }));
+
+// Routes
+APP.use(ROUTE_ANIME);
 
 APP.listen(3000, () => console.log('I listen to port 3000!'));
