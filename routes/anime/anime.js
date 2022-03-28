@@ -9,11 +9,12 @@ let arrErrors = [],
   arrSuccessMessages = [],
   arrValidationResult = [];
 
-ROUTER.get('/anime/getanimes',
+ROUTER.post('/anime/getanime',
   body('intDataSet').isInt(),
   body('intDataLimit').isInt({min: 2, max: 100}),
   body('strOrderBy').isLength({min: 2, max: 32}),
   body('strOrder').isLength({min: 3, max: 4}),
+  body('strSearch').isLength({min: 0, max: 32}),
   (req, res) => {
     arrValidationResult = validationResult(req);
     if (!arrValidationResult.isEmpty()) {
@@ -25,10 +26,15 @@ ROUTER.get('/anime/getanimes',
       strOrderBy = req.body.strOrderBy,
       strOrder = req.body.strOrder,
       strOrderEscaped = strOrder === 'DESC' ? ' DESC ' : ' ASC ',
-      arrInserts = [intDataSet, intDataLimit];
+      strSearch = '%' + req.body.strSearch + '%',
+      arrInserts = [strSearch, intDataSet, intDataLimit];
     MAHOUTOKORO_MASTER_ACCESSOR.getConnection((err, con) => {
       if (err) throw err;
-      let stmt = 'SELECT * FROM anime ORDER BY ' + con.escapeId(strOrderBy) + strOrderEscaped + ' LIMIT ?, ?';
+      let stmt = "SELECT anime.anime_id, anime.name AS 'anime_name', studio.name AS 'studio_name', author.first_name AS 'author_first_name', author.last_name AS 'author_last_name', " +
+        "anime.year, country.country_flag, anime.is_allowed " +
+        "FROM anime, studio, author, country " +
+        "WHERE (anime.studio_id = studio.studio_id AND anime.author_id = author.author_id AND anime.country = country.country_id) AND anime.name LIKE ?" +
+        "ORDER BY " + con.escapeId(strOrderBy) + strOrderEscaped + " LIMIT ?, ?";
       con.query(stmt, arrInserts, (sqlErr, sqlRes, sqlFields) => {
         if (sqlErr) {
           console.error('/anime/getanimes: ' + sqlErr);
