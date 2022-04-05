@@ -1,3 +1,6 @@
+/**
+ * Returns a success message object by passing the success massage key to the function.
+ */
 const SUCCESS_MESSAGES_JSON = require('./successMessages.json'),
   ARR_SUCCESS_OBJECTS = SUCCESS_MESSAGES_JSON.successMessages;
 

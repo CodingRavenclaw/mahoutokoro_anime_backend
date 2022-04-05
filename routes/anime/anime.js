@@ -9,6 +9,16 @@ let arrErrors = [],
   arrSuccessMessages = [],
   arrValidationResult = [];
 
+/**
+ *  Gets an anime by posting the following data to his route:
+ *
+ *  intDataSet: The dataset of the pagination
+ *  intDataLimit: The datalimit of the shown data per page
+ *  strOrder: The sort column of the data
+ *  strOrderBy: The sort direction of the data (ASC or DESC)
+ *  strSearch: The search criterion to get a specific anime
+ *
+ */
 ROUTER.post('/anime/getanime',
   body('intDataSet').isInt(),
   body('intDataLimit').isInt({min: 2, max: 100}),
@@ -49,6 +59,9 @@ ROUTER.post('/anime/getanime',
     });
   });
 
+/**
+ *  Gets the total number of founded anime.
+ */
 ROUTER.post('/anime/gettotalnumberofanime',
   body('strSearch').isLength({min: 0, max: 32}),
   (req, res) => {
@@ -76,6 +89,9 @@ ROUTER.post('/anime/gettotalnumberofanime',
     });
   });
 
+/**
+ *  Gets the total number of anime.
+ */
 ROUTER.get('/anime/gettotalnumberofanimeindatabase',
   (req, res) => {
     arrErrors = [];

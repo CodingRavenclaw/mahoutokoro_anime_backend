@@ -1,3 +1,6 @@
+/**
+ * Returns an error message object by passing the error message key to the function.
+ */
 const ERROR_JSON = require('./errorMessages.json'),
   ARR_ERROR_OBJECTS = ERROR_JSON.errorMessages;
 
